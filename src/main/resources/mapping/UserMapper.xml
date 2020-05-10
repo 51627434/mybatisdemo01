@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatisdemo01.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.mybatisdemo01.entity.User">
+        <result column="id" jdbcType="INTEGER" property="idA" />
+        <result column="userName" jdbcType="VARCHAR" property="userNameA" />
+        <result column="passWord" jdbcType="VARCHAR" property="passWordA" />
+        <result column="realName" jdbcType="VARCHAR" property="realNameA" />
+    </resultMap>
+
+    <select id="sel" resultMap="BaseResultMap">
+        select * from user01 where id = #{id}
+    </select>
+
+    <insert id="saveUser" parameterType="com.example.mybatisdemo01.entity.User">
+        insert into user01 (userName,passWord,realName) values (#{userNameA},#{passWordA},#{realNameA})
+    </insert>
+
+    <delete id="deleteById">
+        delete from user01 where id = #{id}
+    </delete>
+
+    <update id="updateUser" parameterType="com.example.mybatisdemo01.entity.User">
+        update user01 set userName = #{userNameA},passWord = #{passWordA},realName = #{realNameA} where id = #{idA}
+    </update>
+
+    <select id="queryUserById" resultMap="BaseResultMap">
+        select * from user01 where id = #{id}
+    </select>
+    <select id="queryUsers" resultMap="BaseResultMap">
+        select * from user01
+    </select>
+
+</mapper>
